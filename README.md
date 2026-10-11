@@ -17,7 +17,7 @@ SafeHer is a web development project designed to support women's safety through 
 
 ## 🚀 Getting Started
 1. Clone or download this repository.
-2. Open `index.html` in your browser.
+2. Open `w.html` in your browser.
 3. Allow location access if required for location-based features.
 
 ## 🎯 Project Goal
