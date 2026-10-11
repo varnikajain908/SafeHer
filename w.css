@@ -15,7 +15,6 @@ body {
     display: none !important;
 }
 
-/* ===== AUTH PAGES ===== */
 .auth-container {
     background: white;
     max-width: 400px;
@@ -97,7 +96,6 @@ body {
     text-decoration: underline;
 }
 
-/* ===== DASHBOARD ===== */
 #dashboard {
     max-width: 1000px;
     margin: 0 auto;
@@ -124,7 +122,7 @@ body {
     font-size: 16px;
 }
 
-/* ===== CONTACTS SECTION ===== */
+
 .contacts-section {
     margin-bottom: 30px;
     padding: 25px;
@@ -255,7 +253,6 @@ body {
     transform: scale(1.02);
 }
 
-/* ===== SAFETY TIPS SECTION ===== */
 .tips-section {
     margin-bottom: 30px;
     padding: 25px;
@@ -361,7 +358,6 @@ body {
     color: #999;
 }
 
-/* ===== EMERGENCY & SAFETY ===== */
 .emergency-section,
 .safety-section {
     margin-bottom: 20px;
@@ -410,7 +406,6 @@ details p {
     line-height: 1.6;
 }
 
-/* ===== FAKE CALL SECTION ===== */
 .fake-call-section {
     margin-bottom: 30px;
     padding: 25px;
@@ -470,7 +465,7 @@ details p {
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* CALL MODALS */
+
 .call-modal {
     position: fixed;
     top: 0;
@@ -683,7 +678,7 @@ details p {
     transform: scale(1.02);
 }
 
-/* ===== SOS BUTTON ===== */
+
 .text-container {
     display: flex;
     justify-content: center;
@@ -717,7 +712,6 @@ details p {
     transform: scale(0.95);
 }
 
-/* ===== SOS MODAL ===== */
 .modal {
     position: fixed;
     top: 0;
@@ -819,7 +813,6 @@ details p {
     box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .auth-container {
         margin: 40px auto;
