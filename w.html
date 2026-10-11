@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeHer - Women Safety</title>
+    <link rel="stylesheet" href="w.css">
+</head>
+<body>
+
+    <!-- SIGN-UP PAGE -->
+    <div id="signupPage">
+        <div class="auth-container">
+            <h1>SafeHer</h1>
+            <h2>Create Account</h2>
+            
+            <form id="signupForm">
+                <input type="text" id="signup-name" placeholder="Full Name" required>
+                <input type="email" id="signup-email" placeholder="Email Address" required>
+                <input type="tel" id="signup-phone" placeholder="Phone Number" required>
+                <input type="password" id="signup-password" placeholder="Password" required>
+                <input type="password" id="signup-confirm" placeholder="Confirm Password" required>
+                <button type="submit">SIGN UP</button>
+            </form>
+            
+            <p>Already have account? <a href="#" onclick="goToLogin()">Login here</a></p>
+        </div>
+    </div>
+
+    <!-- LOGIN PAGE -->
+    <div id="loginPage" class="hidden">
+        <div class="auth-container">
+            <h1>SafeHer</h1>
+            <h2>Welcome Back</h2>
+            
+            <form id="loginForm">
+                <input type="email" id="login-email" placeholder="Email Address" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <button type="submit">LOGIN</button>
+            </form>
+            
+            <p>Don't have account? <a href="#" onclick="goToSignup()">Sign up here</a></p>
+        </div>
+    </div>
+
+    <!-- DASHBOARD PAGE -->
+    <div id="dashboard" class="hidden">
+        <div class="dashboard-header">
+            <h1>Welcome, <span id="userName"></span>! 👋</h1>
+            <p>Your safety is our priority</p>
+        </div>
+
+        <!-- CONTACTS SECTION -->
+        <div class="contacts-section">
+            <h2>👥 My Emergency Contacts</h2>
+            
+            <!-- ADD FORM -->
+            <form id="addContactForm">
+                <input type="text" id="contact-name" placeholder="Contact Name" required>
+                <input type="tel" id="contact-phone" placeholder="Phone Number" required>
+                <input type="email" id="contact-email" placeholder="Email (optional)">
+                <select id="contact-relation" required>
+                    <option value="">Select Relationship</option>
+                    <option value="Mother">Mother</option>
+                    <option value="Father">Father</option>
+                    <option value="Sister">Sister</option>
+                    <option value="Brother">Brother</option>
+                    <option value="Friend">Friend</option>
+                    <option value="Police">Police</option>
+                    <option value="Doctor">Doctor</option>
+                </select>
+                <button type="submit">➕ Add Contact</button>
+            </form>
+            
+            <!-- CONTACTS LIST -->
+            <div id="contactsList"></div>
+        </div>
+
+        <!-- SAFETY TIPS SECTION -->
+        <div class="tips-section">
+            <h2>📚 Safety Tips & Advice</h2>
+            
+            <!-- SEARCH -->
+            <input type="text" id="searchTips" placeholder="🔍 Search tips..." class="search-input">
+            
+            <!-- CATEGORY FILTER -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterTips('all')">All</button>
+                <button class="filter-btn" onclick="filterTips('Travel')">Travel</button>
+                <button class="filter-btn" onclick="filterTips('Home')">Home</button>
+                <button class="filter-btn" onclick="filterTips('Work')">Work</button>
+                <button class="filter-btn" onclick="filterTips('Online')">Online</button>
+                <button class="filter-btn" onclick="filterTips('Self-Defense')">Self-Defense</button>
+            </div>
+            
+            <!-- TIPS DISPLAY -->
+            <div id="tipsList" class="tips-grid"></div>
+        </div>
+
+        <!-- EMERGENCY NUMBERS -->
+        <div class="emergency-section">
+            <details>
+                <summary>📞 Emergency Numbers</summary>
+                <a href="tel:112">112 - Emergency Response</a><br>
+                <a href="tel:100">100 - Police</a><br>
+                <a href="tel:1091">1091 - Women Helpline</a><br>
+                <a href="tel:108">108 - Ambulance</a><br>
+            </details>
+        </div>
+
+        <!-- SAFETY TIPS DETAILS -->
+        <div class="safety-section">
+            <details>
+                <summary>📚 Safety Tips</summary>
+                <p>• Share your location with trusted contacts.</p>
+                <p>• Keep emergency numbers saved.</p>
+                <p>• Avoid isolated routes at night.</p>
+                <p>• Inform family when travelling alone.</p>
+            </details>
+        </div>
+
+        <!-- FAKE CALL FEATURE -->
+        <div class="fake-call-section">
+            <h2>📞 Fake Call Feature</h2>
+            <p>Use this to safely escape unsafe situations</p>
+            
+            <!-- SELECT CONTACT -->
+            <div class="contact-selector">
+                <label>Choose who should call you:</label>
+                <select id="contactSelect">
+                    <option value="">Select Emergency Contact</option>
+                </select>
+            </div>
+            
+            <button class="call-btn" onclick="startFakeCall()">Start Fake Call</button>
+        </div>
+
+        <!-- INCOMING CALL MODAL -->
+        <div id="callModal" class="call-modal hidden">
+            <div class="call-screen">
+                <div class="call-header">
+                    <h2>📱 Incoming Call</h2>
+                </div>
+                
+                <div class="call-info">
+                    <div class="caller-avatar" id="callerAvatar">👤</div>
+                    <div class="caller-name" id="callerName">Unknown Contact</div>
+                    <div class="caller-relation" id="callerRelation">Friend</div>
+                    <div class="call-status">Ringing...</div>
+                </div>
+                
+                <div class="call-buttons">
+                    <button class="btn-accept" onclick="answerCall()">✓ Answer</button>
+                    <button class="btn-reject" onclick="rejectCall()">✕ Reject</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACTIVE CALL SCREEN -->
+        <div id="activeCall" class="call-modal hidden">
+            <div class="call-screen active-call">
+                <div class="call-header">
+                    <div>
+                        <div style="font-size: 18px; margin-bottom: 5px;">📱 Talking with</div>
+                        <div style="font-size: 14px;" id="activeCaller">Contact Name</div>
+                    </div>
+                    <div class="call-timer" id="callTimer">00:00</div>
+                </div>
+                
+                <div class="conversation" id="conversation"></div>
+                
+                <div class="input-area">
+                    <input type="text" id="userInput" placeholder="Type your response..." onkeypress="handleKeyPress(event)">
+                    <button class="btn-send" onclick="sendMessage()">Send</button>
+                    <button class="btn-voice" onclick="startVoiceInput()">🎤</button>
+                </div>
+                
+                <div class="call-end">
+                    <button class="btn-end-call" onclick="endCall()">End Call</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOS BUTTON -->
+        <div class="text-container">
+            <button class="SOS-button" onclick="activateSOS()">🔴 SOS</button>
+        </div>
+
+        <!-- SOS CONFIRMATION MODAL -->
+        <div id="sosModal" class="modal hidden">
+            <div class="modal-content">
+                <h2>⚠️ Emergency SOS</h2>
+                <p>Are you in immediate danger?</p>
+                <p id="sosLocation" style="color: #666; font-size: 12px;"></p>
+                <div class="modal-buttons">
+                    <button class="btn-danger" onclick="confirmSOS()">YES - SEND ALERT</button>
+                    <button class="btn-secondary" onclick="closeSOS()">CANCEL</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- LOGOUT -->
+        <div class="logout-section">
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <script src="w.js"></script>
+</body>
+</html>
